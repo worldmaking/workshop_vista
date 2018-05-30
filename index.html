@@ -35,67 +35,11 @@ img { width: 100%; max-width: 100%; }
 <div class="full column" id="main_body">
 <script type="bogus" id="sourcetext">
 
+
 - [Doing VR for Researchers](http://vista.info.yorku.ca/vrworkshop)
 - [Lecture 4](lecture4.html)
 - [Lecture 5 - part 1](lecture5_part1.html)
 - [Lecture 5 - part 2](lecture5_part2.html)
-	
-# Lecture 5 - Part 2
-
-## VR in Unity
-
-We'll use the SteamVR driver, as it has the widest support for VR headsets today.
-
-To make this work on a new PC, three things need to be installed:
-
-1. [Steam](https://store.steampowered.com/about/) (if you don't already have it)
-2. The [SteamVR](https://store.steampowered.com/steamvr) driver, through Steam. 
-3. The [SteamVR plugin](https://assetstore.unity.com/packages/templates/systems/steamvr-plugin-32647) within the Unity Asset Store.
-
-Import the SteamVR plugin to your project. It might ask to overwrite some of your project settings; allow it to.
-
-### Convert a scene to enable VR
-
-1. Select your FPSController or RigidBodyFPSController or Main Camera, and in the Inspector, untick the box next to the name (this will disable the object and all its children). 
-2. From the Project, in SteamVR / Prefabs, drag in the [CameraRig] prefab 
-
-To disable VR again, you can disable the [CameraRig] in 
-
-### Adding Teleportation
-
-[Based on tutorial here](https://unity3d.college/2017/05/16/steamvr-locomotion-teleportation-movement/)
-
-Also under [CameraRig] create a RightHand and LeftHand empty obejcts.
-
-Inside of each of these hands, "Add Component" and pick "Hand".
-
-On the Right Hand's script component, set Starting Hand Type to "Right Hand"
-
-On both hand script components, drop the other hand object into the "Other Hand" attribute
-
-Then in the [CameraRig]'s inspector, Add Component "Player", and in this new component:
-- set the Hmd Transforms size attribute to 1
-- drag in the Camera (eye) scene object to the Element 0 attribute
-- set the Hands Size to 2
-- drag in the Left hand and Right hand objects to the Element 0 and Element 1 attributes
-- drag [CameraRig] into the Rig Steam VR attribute
-
-Drag the Teleport Prefab from Project's SteamVR/InteractionSystem/Teleport/Prefabs
-
-#### For specific teleport locations:
-
-Drag in the TeleportPoint Prefab from SteamVR/InteractionSystem/Teleport/Prefabs
-for each desired location
-
-#### For free movement within an area:
-
-- Take the floor object, duplicate it, and make the duplicate a child of the original.
-- Then raise it by 1cm (i.e. set Position Y to 0.01). 
-- Add Component: "Teleport Area".
-
-Do this for as many "floors" you want to be valid teleport targets.
-
-
 
 
 

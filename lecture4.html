@@ -35,38 +35,30 @@ img { width: 100%; max-width: 100%; }
 <div class="full column" id="main_body">
 <script type="bogus" id="sourcetext">
 
-[Doing VR for Researchers](http://vista.info.yorku.ca/vrworkshop)
+
+- [Doing VR for Researchers](http://vista.info.yorku.ca/vrworkshop)
+- [Lecture 4](lecture4.html)
+- [Lecture 5 - part 1](lecture5_part1.html)
+- [Lecture 5 - part 2](lecture5_part2.html)
+
+	
 
 # Lecture 4
 
-Interactivity & data capture (Instruction HUD display between trials, pointing to indicate what has changed, recording data to disk)
+HUD
 
+Press key to start
+
+Click on items (post to console)
+
+Log message to CSV
+
+Press key to stop
 
 ## Recording data to disk
 
 ```csharp
-StringBuilder sb = new StringBuilder();
-List<string[]> rows = new List<string[]>();
-
-// Then for each event:
-public void logEvent(string event, int data1, float data2) {
-	rows.Add(String.Format(“{1},{2},{3}”, event, data1, data2);
-}
-
-// And when complete, to save the file:
-public void saveFile(string filePath) {
-	for(int i = 0; i < rows.Length; i++){
-		sb.AppendLine(rows[i]);
-	}
-
-	StreamWriter outStream = System.IO.File.CreateText(filePath);
-	outStream.WriteLine(sb);
-	outStream.Close();
-
-	// reset:
-	sb = new StringBuilder();
-	rows = new List<string[]>();
-}
+string s = "code samples look like this";
 ```
 
 </script>
