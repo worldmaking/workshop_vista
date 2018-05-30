@@ -95,9 +95,29 @@ for each desired location
 
 Do this for as many "floors" you want to be valid teleport targets.
 
+#### For a laser pointer to select objects
 
+We took the existing SteamVR_LaserPointer.cs prefab and modified it to report an object as it is clicked on by a laser pointer. 
 
+Create a new Script, call it "Vista_Pointer.cs", and paste in the following code:
 
+```csharp
+TODO
+```
+
+Attach this script to each Controller (Left) and/or Controller (Right).
+
+We can then modify this to talk to the CSV writer script, as we did for the mouse clicking script.
+
+#### Teleport to a new scene
+
+Create a TeleportPoint as described earlier, but in the inspector of the TeleportPoint object, change Teleport Type to "Switch to New Scene" and set Switch to Scene to the Scene's name. You can also add a Title to identify the teleport point in the world.
+
+Now in the TeleportPoint.cs script, we can modify the TeleportToScene() function:
+
+```csharp
+
+```
 
 </script>
 </div>
