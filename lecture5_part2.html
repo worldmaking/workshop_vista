@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Doing VR for Researchers</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+<link rel="stylesheet" href="css/hljs/tomorrow.css">
+<link rel="stylesheet" href="css/hljs/mono-blue.css">
+<style>
+/* see https://getskeleton.com/ */
+/* html { font-size: 100%; } */
+table { width:100%; }
+img { width: 100%; max-width: 100%; }
+.youtube {
+ 	max-width: 640px;
+    overflow: hidden;
+}
+.youtube img {
+    max-width: 320px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="row">
+<div class="full column">
+<h3>Doing VR for Researchers</h3>
+<div id="toc"></div>
+</div>
+</div>
+<div class="row">
+<div class="full column" id="main_body">
+<script type="bogus" id="sourcetext">
+
+- [Doing VR for Researchers](http://vista.info.yorku.ca/vrworkshop)
+
+# Lecture 5 - Part 2
+
+## VR in Unity
+
+We'll use the SteamVR driver, as it has the widest support for VR headsets today.
+
+To make this work on a new PC, three things need to be installed:
+
+1. [Steam](https://store.steampowered.com/about/) (if you don't already have it)
+2. The [SteamVR](https://store.steampowered.com/steamvr) driver, through Steam. 
+3. The [SteamVR plugin](https://assetstore.unity.com/packages/templates/systems/steamvr-plugin-32647) within the Unity Asset Store.
+
+Import the SteamVR plugin to your project. It might ask to overwrite some of your project settings; allow it to.
+
+### Convert a scene to enable VR
+
+1. Select your FPSController or RigidBodyFPSController or Main Camera, and in the Inspector, untick the box next to the name (this will disable the object and all its children). 
+2. From the Project, in SteamVR / Prefabs, drag in the [CameraRig] prefab 
+
+To disable VR again, you can disable the [CameraRig] in 
+
+### Adding Teleportation
+
+[Based on tutorial here](https://unity3d.college/2017/05/16/steamvr-locomotion-teleportation-movement/)
+
+Also under [CameraRig] create a RightHand and LeftHand empty obejcts.
+
+Inside of each of these hands, "Add Component" and pick "Hand".
+
+On the Right Hand's script component, set Starting Hand Type to "Right Hand"
+
+On both hand script components, drop the other hand object into the "Other Hand" attribute
+
+Then in the [CameraRig]'s inspector, Add Component "Player", and in this new component:
+- set the Hmd Transforms size attribute to 1
+- drag in the Camera (eye) scene object to the Element 0 attribute
+- set the Hands Size to 2
+- drag in the Left hand and Right hand objects to the Element 0 and Element 1 attributes
+- drag [CameraRig] into the Rig Steam VR attribute
+
+Drag the Teleport Prefab from Project's SteamVR/InteractionSystem/Teleport/Prefabs
+
+#### For specific teleport locations:
+
+Drag in the TeleportPoint Prefab from SteamVR/InteractionSystem/Teleport/Prefabs
+for each desired location
+
+#### For free movement within an area:
+
+- Take the floor object, duplicate it, and make the duplicate a child of the original.
+- Then raise it by 1cm (i.e. set Position Y to 0.01). 
+- Add Component: "Teleport Area".
+
+Do this for as many "floors" you want to be valid teleport targets.
+
+
+
+
+
+</script>
+</div>
+</div>
+</div>
+<script src="js/highlight.pack.js"></script>
+<script src="js/marked.js"></script>
+<script>
+//hljs.initHighlightingOnLoad();
+//hljs.highlight
+
+// Set default options
+marked.setOptions({
+	highlight: function(code, lang) {
+		return hljs.highlight(lang || "javascript", code).value || code;
+	}
+});
+
+var renderer = new marked.Renderer();
+
+
+var toc = []; // your table of contents as a list.
+renderer.heading = function(text, level) {
+	var slug = text.toLowerCase().replace(/[^\w]+/g, '-');
+	if (level == 2) {
+		toc.push("- [" + text + "](#"+slug+")");
+	}
+	return "<h" + level + " id=\"" + slug + "\"><a href=\"#" + slug + "\" class=\"anchor\"></a>" + text + "</h" + level + ">";
+};
+
+var convertMarkdown = function(text) {
+	toc = [];
+	var body = marked(text, { renderer: renderer });
+	document.getElementById('toc').innerHTML = marked(toc.join("\n"));
+	return body;
+};
+
+var body = document.getElementById('sourcetext').innerText;
+document.getElementById('main_body').innerHTML = convertMarkdown(body);
+
+function addyoutube(element, id) {
+	// Load the image asynchronously
+    var image = new Image();
+	image.src = "https://img.youtube.com/vi/"+ id +"/0.jpg";
+	image.addEventListener( "load", function() { element.appendChild(image); }(i));
+	
+   	// click to play
+    element.addEventListener( "click", function() {
+    	this.innerHTML = '<iframe width="640" height="360" src="https://www.youtube.com/embed/'+id+'?rel=0" frameborder="0" allowfullscreen></iframe>';
+    });
+}
+
+var youtube = document.querySelectorAll( ".youtube" );
+for (var i = 0; i < youtube.length; i++) addyoutube(youtube[i], youtube[i].dataset.embed);
+
+</script>
+</body>
+</html>

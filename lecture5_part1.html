@@ -1,0 +1,782 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Doing VR for Researchers</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+<link rel="stylesheet" href="css/hljs/tomorrow.css">
+<link rel="stylesheet" href="css/hljs/mono-blue.css">
+<style>
+/* see https://getskeleton.com/ */
+/* html { font-size: 100%; } */
+table { width:100%; }
+img { width: 100%; max-width: 100%; }
+.youtube {
+ 	max-width: 640px;
+    overflow: hidden;
+}
+.youtube img {
+    max-width: 320px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="row">
+<div class="full column">
+<h3>Doing VR for Researchers</h3>
+<div id="toc"></div>
+</div>
+</div>
+<div class="row">
+<div class="full column" id="main_body">
+<script type="bogus" id="sourcetext">
+
+- [Doing VR for Researchers](http://vista.info.yorku.ca/vrworkshop)
+
+# Lecture 5 - part 1
+
+## A brief history of VR
+
+![cave](http://upload.wikimedia.org/wikipedia/commons/1/1e/Lascaux_painting.jpg)
+
+**30,000 BCE**: From the firelit cave paintings of Lascaux to the birth of painting, architecture, and other arts, we have been attempting to recreate both the world around us and our imagination within.
+
+![butterfly](http://upload.wikimedia.org/wikipedia/commons/c/c1/Dschuang-Dsi-Schmetterlingstraum-Zhuangzi-Butterfly-Dream.jpg)
+
+**4thC BCE**: Zhuangzi dreams he is a butterfly, but questions if he is a butterfly dreaming he is a man. Are dreams also simulations? 
+
+> Once Zhuang Zhou dreamed he was a butterfly, a fluttering butterfly. What fun he had, doing as he pleased! He did not know he was Zhou. Suddenly he woke up and found himself to be Zhou. He did not know whether Zhou had dreamed he was a butterfly or a butterfly had dreamed he was Zhou. Between Zhou and the butterfly there must be some distinction. This is what is meant by the transformation of things.
+> During our dreams we do not know we are dreaming. We may even dream of interpreting a dream. Only on waking do we know it was a dream. Only after the great awakening will we realize that this is the great dream.
+
+![cave](http://upload.wikimedia.org/wikipedia/commons/b/b1/Platon_Cave_Sanraedam_1604.jpg)
+
+**~380 BCE**: Plato likens the uneducated to prisoners in a cave unable to turn their heads. A fire behind them casts shadows of puppets, also behind them, such that all they can see are the puppets' shadows on the wall in front. Such prisoners mistake appearance for reality. 
+
+> The allegory is intended to show that the names we give for things, to allow us as prisoners to converse about what we see, are in fact names for things that we cannot see, but only grasp with the mind. That is, the real meaning of the words we use is not something that we can ever see with our senses alone. But we can only know this by being liberated from the illusion of the shadows.
+
+**1637-1672**: René Descartes invents conventions for analytic geometry and algebraic approaches to geometry; for which reason we still describe space in X, Y and Z axes and call this "Cartesian" coordinates. He believed that algebra was a method to automate reasoning. 
+
+Descartes also uses methodological skepticism to question his existence and perception, and whether he is dreaming or things are externally real. Influenced by the mechanical automatons of his time, he draws attention to the problem of the connection between body and mind, inadvertently launching a dualism that dominates Western thought thenceforth and remains an influence over and problem of VR. 
+
+> "VR opens the door to what Jaron Lanier (who coined the term virtual reality in the 1980s) calls “post-symbolic communication”: No longer are we limited to communicating via sequences of symbols represented by audible vibrations of our vocal chords, or produced by our fingers pressing on a series of keys or, more recently, a flat piece of glass. Instead, you experience my dream directly, without having to interpret long strings of verbal or written symbols... The medium, the place where those stories will unfold, exists within our consciousness. We’ll find ourselves having passed through our long-held, precious frames to live within those stories. And we’ll carry the memory of those stories not as content that we once consumed, but as times and spaces we existed within." - [source](http://virtualrealitypop.com/futureofvr-8be30f0fca6a#.n1s3d4n92)
+
+![panorama](http://upload.wikimedia.org/wikipedia/commons/3/3a/Cross-section-of-the-rotund_0.jpg)
+
+**1800's**: The popular wave of massive-scale panorama paintings, often with dedicated buildings, usually depicting landscapes and/or historic events. 
+
+At the same time, the first attempts to capture permanent images from camera obscura (themselves inspired by caves...) through chemical means marks the birth of photography.
+
+**1838**: Sir Charles Wheatstone invents [stereoscopic photography](http://www.youtube.com/watch?v=Pu6SOckMxT0&feature=youtu.be).
+
+**1885/1935**: L'Arrivée d'un Train 
+
+<div class="youtube" data-embed="8ncULvCVDa8"></div>
+
+The train moving directly towards the camera, shot in 1895, was said to have terrified spectators at the first screening, a claim that has been called an urban legend. What many film histories leave out is that the Lumière Brothers were trying to achieve a 3D image even prior to this first-ever public exhibition of motion pictures, and later re-shot the film in stereoscopic 3D, first screened in 1935. Given the contradictory accounts that plague early cinema and pre-cinema accounts, it's plausible that early cinema historians conflated the audience reactions of the 2D and 3D screenings of L'Arrivée d'un Train.
+
+**1901**: L. Frank Baum, an author, first mentions the idea of an electronic display/spectacles that overlays data onto real life (in this case 'people'), it is named a 'character marker'.
+
+**1935**: Stanley G. Weinbaum's short story "Pygmalion's Spectacles" describes a goggle-based virtual reality system with holographic recording of fictional experiences, including smell and touch: "You are in the story, you speak to the shadows (characters) and they reply, and instead of being on a screen, the story is all about you, and you are in it."
+
+![viewmaster](http://upload.wikimedia.org/wikipedia/commons/f/f5/View-Master_with_Reel.jpg)
+
+**1939**: The ViewMaster stereoscopic device is launched.
+
+**1943**: Patent filed for a head-mounted stereo TV.
+
+**1929-1950s**: Link Trainer, a mechanical flight simulator with motion simulation, to be used by over 500,000 pilots.
+
+![3dcinema](http://i2.cdn.turner.com/money/dam/assets/160726073325-3d-glasses-1952-780x439.jpg)
+
+**1950s-60s**: The "golden era" of 3D cinema. 
+
+![sensorama](http://upload.wikimedia.org/wikipedia/commons/d/dc/Sensorama-morton-heilig-virtual-reality-headset.jpg)
+
+**1957–62**: Morton Heilig, a cinematographer, creates and patents a mechanical simulator called Sensorama with visuals, sound, vibration, and smell. Heilig later (1960) filed a patent for a multisensory HMD.
+
+![hmd](http://patentimages.storage.googleapis.com/pages/US2955156-1.png)
+
+> "When anything new comes along, everyone, like a child discovering the world, thinks that they've invented it, but you scratch a little and you find a caveman scratching on a wall is creating virtual reality in a sense." - Morton Heilig
+
+![philco](http://wearcam.org/ar/philco_hmd_l.png)
+
+**1961**: Philco Headsight is the first HMD, used for remote camera viewing (CCTV), including head orientation tracking.
+
+**1963**: Ivan Sutherland's Sketchpad, one of the first interactive graphics program.
+
+<div class="youtube" data-embed="USyoT_Ha_bA"></div>
+
+[![Personal Television from Life Magazine.](http://cdn.arstechnica.net/wp-content/uploads/2010/04/tvglasses.jpg)](http://arstechnica.com/tech-policy/2010/05/ralph-124c-41-a-century-later/)   
+Hugo Gernsback (of "Hugo Awards" fame), wearing his TV Glasses in a 1963 Life magazine shoot.
+
+**1964**: New York inventor and holographer Gene Dolgoff, who is also the inventor of the digital projector, creates a holography laboratory. Dolgoff's obsession with holography included theories of "matter holograms", the holographic nature of the universe, and the holographic nature of the human brain. 
+
+**1965**: Ivan Sutherland pens [The Ultimate Display. Ivan E Sutherland, 1965](http://worrydream.com/refs/Sutherland%20-%20The%20Ultimate%20Display.pdf), inspiring everything from the Holodeck to the Matrix. 
+
+> "The ultimate display would, of course, be a room within which the computer can control the existence of matter. A chair displayed in such a room would be good enough to sit in. Handcuffs displayed in such a room would be confining, and a bullet displayed in such a room would be fatal. With appropriate programming such a display could literally be the Wonderland into which Alice walked."
+
+![Sword of Damocles](http://blog.modernmechanix.com/mags/qf/c/PopularScience/4-1971/med_vr_goggles.jpg)
+
+**1968**: Ivan Sutherland's Sword of Damocles, widely considered to be the first virtual reality (VR) and augmented reality (AR) head-mounted display (HMD) system. DARPA. 
+
+<div class="youtube" data-embed="NtwZXGprxag"></div>
+
+The next twenty years see slow but non-stop development of VR technologies largely within military, industry, and science research institutions, with a slow infiltration into popular culture.
+
+![holodeck](img/holodeck.jpg)
+
+**1974**: The Holodeck concept appears in Star Trek: the Animated Series, and reappears in 1987 in Star Trek: The Next Generation.
+
+**1975**: Myron Krueger creates Videoplace to allow users to interact with virtual objects for the first time. Book "Artificial Reality" articulates an artform whose primary material is real-time interaction itself.
+
+<div class="youtube" data-embed="dmmxVA5xhuo"></div>
+
+1977****: Star Wars features a hologram (Leia's message for Kenobi) and some of the first widely-seen 3D computer graphics in film (the Death Star plans).
+
+![aspen](http://upload.wikimedia.org/wikipedia/commons/4/48/QADAS.jpg)
+
+**1978**: [Aspen Movie Map](http://en.wikipedia.org/wiki/Aspen_Movie_Map) -- a proto Streetview, interactive via laserdisc, that also had a polygonal mode.
+
+<div class="youtube" data-embed="2Ytd12d6qNw"></div>
+
+**1979**: LEEP HMD with lenses designed for very wide field of view.
+
+**1980**: Steve Mann creates the first wearable computer, a computer vision system with text and graphical overlays on a photographically mediated reality.
+
+![battlezone](http://cdn.mos.cms.futurecdn.net/e3a677f2f9d2dc35ec1a16862d376c25-650-80.jpg)
+
+Battlezone is the first big 3D vector graphics success in arcade games. Battlezone was thought so realistic that the US Army used it to train tank gunners.
+
+**1982**: Atari founds a VR research lab
+
+[Tron](http://en.wikipedia.org/wiki/Tron) movie
+
+**1983**: Brainstorm movie.
+
+**1984**: William Gibson writes [Neuromancer](http://en.wikipedia.org/wiki/Neuromancer), bringing wide acclaim to the cyberpunk genre.
+
+![elite](https://upload.wikimedia.org/wikipedia/en/c/c4/BBC_Micro_Elite_screenshot.png)
+
+Elite, an open world space trading video game, published by Acornsoft for the BBC Micro and Acorn Electron computers, featuring revolutionary 3D graphics
+
+**1985**: Jaron Lanier (formerly of the Atari lab) coins the phrase Virtual Reality and creates the first commercial business ("VPL") around virtual worlds.
+
+VR at NASA:
+
+<div class="youtube" data-embed="NAuytnYU6JQ"></div>
+
+**1989**: [Shadowrun](http://en.wikipedia.org/wiki/Shadowrun) desktop role-playing game in a near-future cyberpunk + VR world
+
+The 90's saw a wave of public interest and hype in VR, which as it grew became often conflated with cybernetics, AI, computer graphics in general, the nascent internet, etc. as *cyberspace*.
+
+**1991**: Virtuality company launches with a new multiplayer hardware prototype in several countries -- but at $73,000 per unit! Sega also launches a VR headset for their console.
+
+![CAVE](http://upload.wikimedia.org/wikipedia/commons/6/6d/CAVE_Crayoland.jpg)
+
+EVL in Chicago launches the first cubic CAVE VR system. Later commercialized by Mechdyne, WorldViz and others, still actively installing new systems in research labs around the world today.
+
+Retinal display developed, scanning images onto retina, commercialized by Microvision. (Antecedent of tomorrow's MagicLeap).
+
+Computer Gaming World magazine predicted "Affordable VR by 1994"
+
+ABC Primetime covers the VR scene (from [vrtifacts.com](http://vrtifacts.com/virtual-reality-1991-many-believe-it-will-revolutionize-the-way-we-live/)):
+
+<div class="youtube" data-embed="c5ZnWNilMxw"></div>
+
+**1992**: Neal Stephenson writes [Snow Crash](http://en.wikipedia.org/wiki/Snow_Crash)
+
+Lawnmower Man movie.
+
+Sega Virtua Racing, and Virtua Fighter (1993) popularized polygonal 3D games.
+
+**1994**: The first version of Virtual Reality Modeling Language (VRML), a standard for sharing interactive  3D vector graphics on the web, and by 1997 several 3D chat environments exist.
+
+[1994: Topological Slide. Michael Scroggins & Stewart Dickson.](https://michaelscroggins.wordpress.com/topological-slide/)
+
+<iframe src="https://player.vimeo.com/video/137575437" width="720" height="540" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+[Paper: Absolute Animation and Immersive VR](https://michaelscroggins.files.wordpress.com/2013/02/absolute_animation_and_immersive_vr.pdf).
+
+1995: Maurice Benayoun creates a VR artwork **Tunnel under the Atlantic** connecting the Pompidou Centre in Paris and the Museum of Contemporary Art in Montreal with 3D modeling, video chat, spatialized sound, and AI.
+
+Strange Days and Johnny Mnemonic movies.
+
+[1995: Osmose. Char Davies](http://www.immersence.com/publications/char/2004-CD-Space.html)
+
+<div class="youtube" data-embed="54O4VP3tCoY"></div>
+
+- Char Davies was painter, became co-founder of SoftImage (-> Autodesk)
+- She wanted to demonstrate medium's potential, and "aspects related to the medium of "virtual reality" that are often overlooked"
+- Subvert conventional approaches that reinforce an outdated dualist (and masculine) worldview. 
+- She redefines immersive virtual space as a medium for de-habituating perception and re-sensitizing us to our own being in the world.
+- "Evoke rather than illustrate"; metaphors, aviod solid objects, use translucencies
+- Explicit parallel with deep-sea diving (floating, breathing to rise/fall, leaning to move)
+
+![@9.23: scene map](img/osmose_scene_map.png)
+
+[A mini documentary](http://youtu.be/bsT59fp8LpY)
+
+![Osmose](http://www.immersence.com/centralizedImages/osmose/Osm_Tree_600@2x.jpg)
+
+---
+
+The same year was also identified as the 'death of VR'. Nintendo releases [VirtualBoy](http://en.wikipedia.org/wiki/Virtual_Boy) for US$ 180, and discontinues it just six months later. [("Nail in the coffin for 90's VR")](http://vrtifacts.com/virtual-boy-another-perspective/) A survey by Computerworld magazine in 2007 listed VR as the 7th biggest technology flop in history.
+
+**What went wrong?**
+
+- Inadequate Image Resolution
+- "Motion to photon latency" too high
+- Limited Position Tracking
+- Cumbersome Equipment
+- Lack of Interpretation of Body Movements
+- Simulation Sickness
+- Cost
+- Slow computers
+- Poor software design
+- Lack of data/understanding the human body, lack of haptics research etc.
+- Premature launches & inflated expectations
+- Charlatans
+- Concern about liability (user accidents)
+- Single-user problem
+- No consumer "killer app"
+
+ 
+![quake](http://cdn.mos.cms.futurecdn.net/95c21aa0e5964acbd5ace2d37740fa6a-650-80.jpg)
+
+**1996**: Quake pioneers play over the Internet first-person shooters. 
+
+3dfx Interactive released the Voodoo chipset, leading to the first affordable 3D accelerator cards for personal computers. [Within a few years dedicated 3D graphics processing unit cards (GPUs) become essential for most video games, and GPU performance wars rapidly increase real-time 3D rendering capabilities at consumer price levels.](http://www.techradar.com/news/gaming/the-evolution-of-3d-games-700995/2)
+
+Meanwhile, although VR was still capturing some SF attention and slowly being rediscovered through the web, VR develops mainly in research labs, and steadily continues to grow in big-budget industrial, science & health research, as well as military training, outside the media radar.
+
+> "VR was used to visualize oil fields and to visualize machinery to extract oil more efficiently from old fields. Similar things happened in medicine. We understand more about large molecules, we understand more about how the body heals from surgery through VR simulations." - [Whatever happened to VR -- interview with Jaron Lainer (2007)](http://www.10zenmonkeys.com/2007/03/09/whatever-happened-to-virtual-reality/)
+
+**1999**: [The Matrix](http://en.wikipedia.org/wiki/The_Matrix) and eXistenZ movies.
+
+**2001**: Grand Theft Auto III released, popularizing 3D open world games with a non-linear style of gameplay
+
+**2005**: [The AlloSphere](http://www.allosphere.ucsb.edu)
+
+<div class="youtube" data-embed="u-D-zEToJQ4"></div>
+
+Over this period VR also gradually begins to appear on the web.
+
+![SL](http://upload.wikimedia.org/wikipedia/commons/c/c6/Second_Life_11th_Birthday_Live_Drax_Files_Radio_Hour.jpg)
+
+**1999**: Entrepreneur Philip Rosedale forms Linden Lab to develop hardware for 360 degree VR, but this soon transforms into a platform for 3D socializing, launching SecondLife in 2003.
+
+**2007**: Google Streetview launched.
+
+**VR goes into the garage, then goes mainstream again**
+
+**2009**: [A teenage Palmer Luckey announces on a BBS post his home-made Oculus "Rift" HMD.](http://www.mtbs3d.com/phpbb/viewtopic.php?f=120&t=14777)
+
+2011: Now 18, Palmer hacks together a rough prototype in his parents’ garage in Long Beach, California.
+
+2012: John Carmack (lead programmer of Doom, Quake, and many other pioneering 3D games) introduces a duct taped head-mounted display based on Luckey's prototype at the Electronic Entertainment Expo. Palmer's company, Oculus VR, launches [a Kickstarter campaign](http://www.kickstarter.com/projects/1523379957/oculus-rift-step-into-the-game) to fund the development of the Rift. It is phenomenally successful,  raising US$2.4 million for the development of the Rift. 
+
+<div class="youtube" data-embed="DhcOMOWRMnA"></div>
+
+2013: First Oculus Rift developer kit (DK1) ships, for $300. Developer kits are released to give developers a chance to develop content in time for the Rift's release; these have also been purchased by many virtual reality enthusiasts for general usage.
+
+**2013**: Google announces an open beta test of its Google Glass augmented reality glasses.
+
+[Birdly](http://birdly.zhdk.ch/about/)
+
+<div class="youtube" data-embed="JApQBIsCK6c"></div>
+
+[The Machine to be Another](http://www.themachinetobeanother.org)
+
+<div class="youtube" data-embed="_Wk489deqAQ"></div>
+
+> Gender Swap is an experiment that uses themachinetobeanother.org/ system as a platform for embodiment experience (a neuroscience technique in which users can feel themselves like if they were in a different body). In order to create the brain ilusion we use the immersive Head Mounted Display Oculus Rift, and first-person cameras. To create this perception, both users have to synchronize their movements. If one does not correspond to the movement of the other, the embodiment experience does not work. It means that both users have to constantly agree on every movement they make. Through out this experiment, we aim to investigate issues like Gender Identity, Queer Theory, feminist technoscience, Intimacy and Mutual Respect. 
+
+**014**: Second Oculus Rift developer kit (DK2) ships, for $350. More than 100,000 DK2's shipped by 2015. Oculus VR is acquired by Facebook for $2 billion.
+
+[SightLine: The Chair](http://sightlinevr.com), by Frooxius
+
+<div class="youtube" data-embed="SUH7gWS96Hs"></div>
+
+> "This experience is based off the gaze-direction mechanics of the award winning prototype "SightLine", originally developed for the 2013 VR Jam sponsored by Oculus VR and IndieCade."
+
+**2015**: Microsoft announces HoloLens augmented reality headset.
+
+HTC partners with Valve Corporation to develop the HTC Vive headset and controllers, released early 2016.
+
+[Tiltbrush](http://www.tiltbrush.com)
+
+<div class="youtube" data-embed="uFWw6hGIKmc"></div>
+
+---
+
+**2016** Announced as "the year of VR"
+
+- Rift/Vive consurmer models started shipping.
+- Sony, Facebook, Google, Microsoft, Samsung, Valve, nVidia, Apple and many other large corporations gambling on VR's success. 
+- Why now?
+	- Technological feasibility & affordability
+		- Advances in small displays (thanks to cellphone industry)
+		- Advances in 3D graphics (thanks to gaming industry)
+	- Gaming industry crisis? Looking for the next big thing?
+	- Existing software platforms (Unity, Unreal etc.) viable
+
+**2017-2018**
+
+- A plethora of hardware releases, expanding software repertoires (though still few 'killer apps'), rise to public consciousness, VR arcades, Ready Player One movie, etc.
+- Hardware updates with better display, tracking, hand tracking, untethered options, etc.
+- Still not 'stable'
+	- Slower rise/uptake than forecasted
+	- Not cheap!
+	- 360 video vs. "real" VR
+	- Seated vs. room-scale VR
+	- VR with see-through video vs. AR glasses
+	- SteamVR vs. Oculus Home vs. Viveport etc. (content delivery networks)
+	- Tethered / wireless / standalone
+- Still not entirely clear how much it will be used
+
+> Michael Abrash, Chief Scientist, Oculus: "The future of VR lies in the unique experiences that get created in software, and if I knew what those would be, even in broad outline, I would be very happy." 
+
+
+Hardware:
+- Two main consumer PC-tethered headsets (Oculus Rift, HTC Vive), along with a variety of others in the Windows Mixed Reality design, the Pimax super-high FOV headset, etc. 
+	- currently tethered to PC by cable, but untethered expected to come
+- One console-based headset (Playstation VR)
+- Multiple cellphone-based devices, and emerging standalone devices (Oculus Go etc.); lower performance, limited tracking
+- Lots of other variants and startups coming
+
+
+[![vrfund](http://www.thevrfund.com/wp-content/uploads/vr_industry_aug2016.png)](http://www.thevrfund.com)
+
+It's not 1995 -- there's huge investment, affordable platforms, ready authoring tools and delivery networks, and proven use cases. 
+
+[VR and AR are the next mega tech themes through to 2030; with today likened to the state of mobile phones 15 years ago. Major mainstream adoption predicted for 2025. VR will be the first phase, followed by AR. Content market expected to reach $5.4B by 2025.](http://cdn.instantmagazine.com/upload/4666/piperjaffray.f032beb9cb15.pdf)
+
+[Augmented/Virtual Reality revenue forecast revised to hit $120 billion by 2020](http://www.digi-capital.com/news/2016/01/augmentedvirtual-reality-revenue-forecast-revised-to-hit-120-billion-by-2020/#.WBCt8Fdy7y8)
+
+![hype cycle](http://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Gartner_Hype_Cycle.svg/559px-Gartner_Hype_Cycle.svg.png)
+
+- Are we in the beginning of the plateau of productivity, or in another hype cycle? [For more on hype cycles](http://www.gartner.com/newsroom/id/2575515) -- Gartner in 2013 placed the plateau for VR in the 5-10 year range.
+
+> (See also [The Rise and Fall and Rise of Virtual Reality](http://www.theverge.com/a/virtual-reality/) and [Introduction to Virtual Reality](http://www.slideshare.net/marknb00/comp-4010-lecture-1-introduction-to-virtual-reality))
+
+-------
+
+## The illusions of VR
+
+- Film/animation depends on a perceptual illusion -- [persistence of vision](http://en.wikipedia.org/wiki/Persistence_of_vision). This is easier to understand via animation: around 12-15 frames per second is enough for the brain to interpret as movement, but only when sequent images are plausible enough to be fused. *Plausibility* in this case is a function of neurophysiology and cognition. (Of course, cinema also depends on other perceptual quirks, such as the brain's acceptance of cuts in editing even though nothing like a cut exists in real life, the suspension of disbelief through non-human perspectives, and so forth.)
+
+- Stereoscopic 3D (S3D) builds on another perceptual illusion. Presenting to each eye a viewpoint slightly displaced laterally emulates the *parallax effect* -- one of the most powerful visual cues to impart depth (distance). Again, this is dependent on the human body, and also requires very careful alignment. Some, though few, people experience discomfort due to discrepancies between the stereoscopic 3D depth cue and others that are lacking, such as vergence.
+
+Virtual reality depends on both of these illusions, and others such as egocentric spatialized audio; it also greatly benefits from wide field of view, high resolution, and other factors of **immersion**. 
+
+- The crucial addition for VR is *head tracking*, which means we can present a coherent image regardless of what direction we face, resulting in the impression that the image entirely surrounds us -- it becomes our sensorium. This illusion however breaks down if the delay between movement and image (motion-to-photon) is greater than a couple of handfuls of milliseconds, which underlies the need for high frame rates (90fps for current desktop models) to avoid nauseating "judder". 
+
+- This illusion is far more effective with *position tracking*: matching the lateral movements of the head as well as its orientation, so that you can look around, over and under things, and generally benefit from more kinds of depth cues we experience in real life, as well as further reducing the chance of nausea.
+
+The result is that the viewer no longer perceives an image plane worn in front of the eyes, and instead perceives oneself being present in another world. **Instead of an image moving in front of your eyes, the world appears as a fixed space in which you are moving your own head.** (This also means that stereoscopic content can be as close as your nose, something that S3D cinema cannot normally achieve because of the limits of the frame).
+
+- The combination of all the above can create a compelling immersive experience. Together with the qualities of content, this leads to the evocation of **presence**, the sense of actually being-there in the world; a continuous illusion of non-mediation. 
+
+- But aside from presence, VR can also maximize interaction (the extent to which a user can manipulate objects and the environment of the system) and autonomy (the system's ability to receive and react to external stimuli, such as actions performed by a user). In that regard, convincing experiences created by **real-time simulations that support agency** -- the ability to take meaningful action in a world and discover meaningful consequences -- are just as essential.
+
+## Nausea and Simulator Sickness
+
+> Simulation Sickness is a syndrome, which can result in eyestrain, headaches, problems standing up (postural instability), sweating, disorientation, vertigo, loss of colour to the skin, nausea, and - the most famous effect - vomiting. It is similar in effects to motion sickness, although technically a different thing. Simulation sickness can occur during simulator or VR equipment use and can sometimes persist for hours afterwards... If VR experiences ignore fundamental best practices, they can lead to simulator sickness—a combination of symptoms clustered around eyestrain, disorientation, and nausea. - [Article on Gamasutra - by Ben Lewis-Evans on 04/04/14](http://www.gamasutra.com/blogs/BenLewisEvans/20140404/214732/Simulation_Sickness_and_VR__What_is_it_and_what_can_developers_and_players_do_to_reduce_it.php)
+
+Simulator sickness involves three kinds of issues:
+
+- Oculomotor
+	- Headaches, fatigue, eye strain, can't focus
+- Nausea
+	- Sweating, salivation, can't concentrate, burping/stomach awareness
+- Disorientation
+	- Blurry vision, dizziness (with eyes open or closed), vertigo (24%)
+
+Which is to say, *virtual worlds can be dangerous!* See this 1996 NBC special:
+
+<div class="youtube" data-embed="O0arluK5zrQ"></div>
+
+In fact simulator sickness has been known about since the earliest flight simulators of the 1950's, but is still not fully understood. It is clearly triggered by "cue conflicts", whereby what some parts of the visual system are reporting does not match what other sensory components (such as proprioceptive systems) are reporting. 
+
+(Some researchers hope to alleviate VR nausea by galvanic vestibular stimulation, [for example the Mayo Clinic](http://ir.net/news/virtual-reality/124021/mayo-clinic-vr-nausea/), but as yet this hasn't convinced the industry. [See also this](http://uploadvr.com/vr-sim-sickness-combated/
+).)
+
+Some people are far more or less susceptible than others. It generally affects younger people less, and tends to reduce with increased exposure (getting your "VR legs"). People with a history of MS, alcohol/drug abuse, etc. also tend to be more susceptible.
+
+> Around 5% of all individuals will never acclimate regardless how much they try to build a resistance to it meaning there is a confirmed minority of individuals who will never be able to us Virtual Reality as a mainstream product over their lifetime. - [Sim Sickness guide on Oculus forums](https://forums.oculus.com/viewtopic.php?t=170)
+
+Since nausea/sim-sickness remains one of the greatest risks to virtual reality's success, it is essential to consider in the design of an experience. 
+
+> Virtual reality’s biggest enemy is bad virtual reality.  – Palmer Luckey
+
+> The fear is if a really bad V.R. product comes out, it could send the industry back to the '90s, – John Carmack
+
+### Latency
+
+To some extent this is a hardware problem -- and recent advances in VR hardware and drivers have come a long way to minimize the risk. However this still very deeply affects how we design our content, and is important to understand.
+
+- Latency is how long it takes for a message to transmit. *Motion to photon* latency measures how long it takes for a change in head rotation to be reflected in a change in the image perceived. It should be *consistently* under 20 milliseconds to avoid nausea. Failing to do so can result in  sluggish or sloppy motion tracking, in which the world 'swims' around you. Even occasional hiccups will be experienced as a disturbing "judder" that is never experienced in normal life. The Oculus and Vive hardware now run at 90 fps and their drivers do some tricks to help keep latency down, but it also depends crucially on the content and quality of the software. 
+	
+- Anything that can potentially interrupt or slow down rendering, or delay the motion-to-photon pathway, has to be avoided to prevent nausea. The need for low-latency and high-framerate is one of the reasons why certain visual details and effects common in video games are eschewed in VR. When the world surrounds in you stereoscopy, geometry is often more important than screen-based post-processing. In particular, many effects popular in games are actually rendered across several frames -- this is simply not viable for VR. 
+
+- A related issue is image persistence: a low-persistence image has a longer black interval between presenting frames, which reduces the smear/blur/ghosting when moving your head. This is mainly a display screen technology issue and largely resolved in current generation hardware. 
+
+![Persistence](https://lh5.googleusercontent.com/bS3bZRKphnYPK1IAP7DwYN6e3Y_7y6-8RnHVutmm15S_wjzkf4M1vDR0OczN0kHx6PVd-10jd4vmhDFNhY0I18_31ovaKI2s6X_noyC9jk0AutfhEM4BIvnNyFjS6Q)
+
+### Motion cue conflicts
+
+The other major cause of nausea is motion cue conflicts, in which the movement portrayed by the images presented is not consistent with real motion of the body (or with an expected motion). This is almost the inverse of motion sickness, and appears to trigger a response in the body consistent with an assumption of being poisoned. Modern life has also brought to us another real-world parallel: 
+
+> Imagine you’re on a train and look out the window to see a train leaving the station. As that train begins to move it creates an illusion of movement in your own mind and your brain’s likely conclusion is that the train you are on is actually moving in the opposite direction, that illusion is called “Vection.” Vection occurs when a portion of what you can see moves, and is one of the things that can lead to motion sickness in VR." - [5 ways to reduce motion sickness in VR](http://uploadvr.com/five-ways-to-reduce-motion-sickness-in-vr/) 
+
+Any change of velocity (or rotational velocity, i.e. turning) is an *acceleration*, which imparts a physical force on the body detected primarily via the vestibular system. If such changes occur in the virtual world but are not mirrored in physical vestibular response (e.g. by navigating with a joystick rather than on a treadmill) nausea can very rapidly ensue. 
+
+There are two important categories of motion cue conflicts to consider:
+- Virtual motions initiated by the viewer with no physical correlate (**the locomotion problem**)
+- Virtual motions not initiated by the viewer (breaking the **HMD-is-the-camera** rule)
+
+### The camera is always head-mounted
+
+It is helpful to **think of the HMD as the camera** into a virtual world that is aligned to the real world. (At [Weird Reality](http://artandcode.com/), I heard several speakers described the HMD as a 'head-mounted camera'). 
+
+> The rendered image must correspond directly with the user's physical movements; do not manipulate the gain of the virtual camera’s movements. - [Best practices, Oculus](https://developer.oculus.com/documentation/intro-vr/latest/concepts/bp_intro/)
+
+The golden rule for designers is that we must **never take away control of the camera from the viewer**, not even for a moment. This means no fixed-view cut-scenes or 'cinematics', no full-screen imagery, no lens and framing control, etc. Also no motion blur, depth of field effects etc. (still takes away viewer control). 
+
+> One of the big challenges with VR storytelling lies within the constraints on camera movement forced upon us by this tiny detail called simulator sickness. Quick zoom in to focus on a detail – nope, not possible, you can’t zoom in VR. Nice dolly shot moving around the scene – be careful or the viewer might have a look at what he had for breakfast instead of comfortably watching your experience... the safest bet is not having continuous camera movement at all. - [The limbo method](http://uploadvr.com/introducing-limbo-a-vr-camera-movement-technique-by-the-developers-of-colosse/)
+
+Since the immersant is free to look in any direction they choose, you need to make sure all directions are valid, potentially valuable, and that nothing essential will be missed because 'they were looking the wrong way'. 
+
+It also means that **everything should be in-world**. Nothing should "stick" to the viewer's headset -- not even messages/menus, head-up displays, etc. 
+
+> Maintain VR immersion from start to finish—don’t affix an image in front of the user (such as a full-field splash screen that does not respond to head movements), as this can be disorienting... Even in menus, when the game is paused, or during cutscenes, users should be able to look around. - [Best practices, Oculus](https://developer.oculus.com/documentation/intro-vr/latest/concepts/bp_intro/)
+
+User interface elements are uncomfortable if they are stuck to the headset, better if they are transparent overlays that keep the world's orientation, and best if they are actually objects in the world. They could be:
+
+- on walls ![walls](https://twentymilliseconds.com/screenshots/ui-walls-example.png)
+- on objects, on screens in world ![screens](https://twentymilliseconds.com/screenshots/vr_typing_hud.png)
+- or cockpit, 
+- or floating over its subject ![coins](https://twentymilliseconds.com/screenshots/lucky/coins-ui.gif)
+
+
+### When is camera movement OK?
+
+> Our inner ear detects various changes in velocity, or accelerations, but it doesn’t detect constant velocity. Because of this, developers can have someone moving at a constant speed in a relatively straight line and the simulator sickness effects will be greatly reduced. - [5 ways to reduce motion sickness in VR](http://uploadvr.com/five-ways-to-reduce-motion-sickness-in-vr/)
+
+There *are* plenty of examples of VR projects that also utilize moving cameras, but you can still look around independently on top of this motion. Generally the fixed component of the camera motion is slow, at constant speed, in a straight line in the world, or only in the direction the person is facing. This is the kind of "rails" experience that has been disappointing to many, and still nauseous to some. Senza Peso is an interesting example.
+
+For more complex camera movements an option is to fade out all but the most important elements to minimize visual flow during the movement. This "limbo effect" was suggested by the authors of Colosse in order to allow non-nauseating camera effects -- and it also relies on some (fairly subtle) cues of ground and body orientation, as well as removing most of the elements of the scene to reduce vection (a method they also leveraged for narrative focus):
+
+![colosse](http://uploadvr.com/wp-content/uploads/2015/09/limboBeachSnippet13.gif)
+
+> Notice the subtle points of reference in the scene that are meant to maintain a consistent frame of reference. Somewhat like staring at a single spot on the floor to maintain balance. We used two elements to create this reference frame: a subtle particle effect and a ground plane far below the user. Using short lived particles we were able to create this artificial reference frame without distracting the user. - [Introducing Limbo, a VR camera movement technique by the developers of Colosse](http://uploadvr.com/introducing-limbo-a-vr-camera-movement-technique-by-the-developers-of-colosse/)
+
+In contrast, one of the most disturbing camera motions of all is the oscillating 'head bob' and other 'camera shake' effects often added to games. (The head-bob in particular is right around a 3-5Hz frequency that is particularly nauseous.)
+
+![headbob](https://lh5.googleusercontent.com/fUQXkmhrWdpCi_F9vfbI8U2Ss-zB5O11xn_wNCBbTSJczmjaRefoV26EflYqwgNpgK0hrgC4ZTB372IalQhssSKD98MZ7B8lp04glfqiXpFwICL5MuzlNPBzNaw3MA)
+
+### Collisions
+
+It is also disturbing to be suddenly (unexpectedly) moved in the world because of collisions with objects or other dynamic impacts. However if collisions do not stop camera motion, people will be able to simply walk through walls and poke their heads inside of objects in the world, and float rather than fall, etc. 
+- To deal with collisions, some recommend simply fading the image toward black as you get very close to a object's surface, or enter inside of it. This is often enough to naturally guide people away from walls and other surfaces, and also prevents the disturbing vision of a wall made of paper, or the betrayal of the secrets behind it. 
+- Similarly, to effect impacts, a dip to black around the movement is an option.
+
+## Locomotion
+
+Avoiding motion cue conflicts altogether would limit viewer's exploration of a virtual world to the same physical dimensions of the real room they are in. To explore vaster worlds we must allow people to move virtually but not physically, via **some design compromises that nevertheless minimize triggers of nausea**. [Some say that this locomotion question is the biggest problem for VR.](http://fatedblog.com/2015/08/06/locomotion-simulation-sickness-and-the-fear-of-vr/). 
+
+> "It’s in the interest of all parties to keep faulty reality away from users, and Sony, Valve, and Oculus all have the quality control systems in place in order to do that. Oculus has even devised a new “comfort” rating system, which divides its launch lineup of games into “comfortable,” “moderate,” and “intense” categories." - [Virtual Reality’s Locomotion Problem](http://motherboard.vice.com/read/virtual-realitys-locomotion-problem?trk_source=recommended)
+
+Even being able to turn around to face behind you (rather than looking over your shoulder) is problematic. The classic yaw movement -- a horizontal rotation -- has been described as "VR poison" by John Carmack -- but without it, our worlds will be mostly straight paths... This is really problematic for artists coming from gaming environments -- most people simply can't use mouse or right-stick to change body orientation in the world without becoming sick. 
+
+> Remember that “acceleration” does not just mean speeding up while going forward; it refers to any change in the motion of the user. Slowing down or stopping, turning while moving or standing still, and stepping or getting pushed sideways are all forms of acceleration. - [Best practices, Oculus](https://developer.oculus.com/documentation/intro-vr/latest/concepts/bp_intro/) 
+
+- Similarly, the kinds of lateral 'strafing' movements that are common to first-person shooter games can be quite disturbing in VR. 
+- Moving over uneven ground can create unexpected vertical movements. Either steady the movement, or soften the ground.
+- Stairs can be especially unpleasant (both going up and down). Use elevators, or ramps with very shallow inclines.
+
+Finally, walking around a world is really counter intuitive, as you may have to think about two different spaces simultaneously -- the space you can physically move around in, and the space you can navigate around in. 
+
+### Some solutions / compromises
+
+**Just don't do locomotion at all** 
+
+- Create a world that is sufficiently interesting at the scale of a small room
+	- E.g. Job Simulator, Fantastic Contraption, I expect you to die, etc.
+	- E.g. create a world at a 'tabletop' scale
+- Create a world that changes over time around you
+	- E.g. Sightline - The Chair
+	- E.g. work with scale, zooming into detail or out to macroscopy, rather than change in location
+
+A lot of 2016's sanctioned VR content avoided locomotion.
+
+**Instant accelerations are better than smoothing**
+
+- If you have to change velocities, do it instantaneously rather than gradually. (This differs from the norm in screen-based games, for example). Don't accelerate smoothly: immediately moving and immediately stopping is better (for most people).
+	- Same for rotations. Jumping between angles is better than smooth panning (for most people). Cloudhead games calls this "comfort mode": snapping a predictable number of degrees left or right, and holds that this significantly reduces nausea. But for some players this breaks immersion too much, and it can also leave immersants a bit confused as to where they are actually facing.
+
+<div class="youtube" data-embed="Gp0eMNSVtZA"></div>
+
+**Instant transitions (AKA teleport)**
+
+Vive's introductory content The Lab uses this method extensively. It is very low in terms of nausea, but relatively immersion breaking. It also depends on developing a method to identify valid locations to teleport to. 
+
+[It has been argued that we can handle teleports in VR in a similar way that we can handle cuts in TV](https://www.engadget.com/2016/10/07/why-teleportation-makes-sense-in-virtual-reality/)
+
+<div class="youtube" data-embed="nmR8iqXSspA"></div>
+
+It can also become a game mechanic:
+
+<div class="youtube" data-embed="gbp7xX9QPOc"></div>
+
+Unreal's VR template includes teleport support.
+
+**The third person view**
+
+- Many developers have suggested a 3rd person (behind the avatar) viewpoint reduces the nausea. Oculus bundled a 3rd-person platformer ("Lucky's Tale") with the first release.
+
+- A rather more unusual mode of navigation switches into 3rd person while moving, and back to 1st person when stationary.
+
+**Reducing the field of view during motion**
+
+Sim sickness is much less prevalent when the field of view is lesser, however this also reduces immersion & presence. Some suggest reducing FOV only in those moments that could be particularly nauseating. Others have suggested a kind of small FOV preview overlay while moving, that expands out to full screen when movement ends.
+
+<div class="youtube" data-embed="lHzCmfuJYa4"></div>
+
+Reducing the field of view may work because it reduces vection.
+
+**Anchoring (Cockpit) methods**
+
+Placing a reference frame around the point of view can help stabilize the senses -- which is why cockpit-based simulations (inside cars, spaceships, robots, or even just a helmet, etc.) can handle much greater accelerations and rotations without inducing sickness. It might be as simple as having a reference that says which way is "body-forward", but it also taps into the reduced field of view as above.
+
+[However it might be possible that the reference frame is semi-transparent, and even that it is not present for much of the time.](https://www.reddit.com/r/oculus/comments/3yihao/i_solved_vr_sickness_maybe/) -- more research is needed. See also the "canvas mode" [here](http://tore-knabe.com/virtual-reality#MovementExperiments)
+
+**Give them a body?**
+
+Many people report it disturbing to look down and see no body, especially for sedentary experiences. This may be related to giving a reference frame that has a *logical* anchor in the world. However, some say that looking down and seeing somebody else's body is equally disturbing, and others have shown that even a reference frame with no ontological sense can help. More research needed!
+
+> A virtual avatar ... can increase immersion and help ground the user in the VR experience, when contrasted to representing the player as a disembodied entity. On the other hand, discrepancies between what the user’s real-world and virtual bodies are doing can lead to unusual sensations (for example, looking down and seeing a walking avatar body while the user is sitting still in a chair). - [Best practices, Oculus](https://developer.oculus.com/documentation/intro-vr/latest/concepts/bp_intro/)
+
+![nose](http://www.wired.com/wp-content/uploads/2015/04/vrnosetuscany.gif)
+
+[Research at Purdue suggests that overlaying the peripheral image of a nose helps reduce simulator sickness by 13.5%](http://www.wired.com/2015/04/reduce-vr-sickness-just-add-virtual-nose/)
+
+Again, a non-realistic body might be better than a pseudo-realistic body. Perhaps it need not even be human (or humanoid). This removes issues of mismatch size, gender, skin color, age, etc that could create cognitive dissonance. Alternatively, give immersants control over their avatar appearance.
+
+> When it comes to modeling player avatars in VR, abstract trumps the real. Malaika says Valve has found that players tend to feel less immersed in games that try to model hands realistically, and more immersed in games with cartoony hands. - [Valve advice for VR](http://www.gamasutra.com/view/news/250362/Valve_shares_advice_on_designing_great_VR_game_interactions.php)
+
+**Redirected walking**
+
+The notion here is that while walking in the real space, the virtual world is slightly rotated (below perceptual levels). Although we feel we are walking in a straight line in the virtual space, we are in fact walking in circles in the real world. Problem: still requires much larger spaces than most rooms.
+
+<div class="youtube" data-embed="KVQBRkAq6OY"></div>
+
+A related method is 1:X motion, in which moving 1 meter in the real world may move you more than 1 meter in the virtual space. Horizontal exaggeration appears to not induce nausea, but vertical movement should remain 1:1.
+
+<div class="youtube" data-embed="At_Zac4Xezw"></div>
+
+**Displacement of motor functions**
+
+Disturbance is reduced if some body actions accompany a movement. Some games use a 'running in place' or 'paddling with the hands' behaviour to trigger walking in the virtual space:
+
+<div class="youtube" data-embed="15lvlAEHXww"></div>
+
+Or swimming etc.:
+
+<div class="youtube" data-embed="MjwNItck_Vg"></div>
+
+Or grappling hooks:
+
+<div class="youtube" data-embed="3Ore5DG1qT0"></div>
+
+Other experiences use the direction of the hands or fingers to indicate direction of motion, which appears to reduce nausea.
+
+---
+
+Overview of locomotion methods:
+
+<div class="youtube" data-embed="p0YxzgQG2-E"></div>
+
+[Another overview here](http://ignite-vr.com/blog/2016/09/24/locomotion-in-vr/)
+
+Many of these solutions are utilized in EagleFlightVR, which has had [very strong reviews commenting about the lack of nausea](http://www.roadtovr.com/eagle-flight-review-vr-psvr-htc-vive-oculus-rift/).
+
+<div class="youtube" data-embed="4TJdTB5qQjA"></div>
+
+### Other forms of disturbance
+
+> Avoid visuals that upset the user’s sense of stability in their environment. Rotating or moving the horizon line or other large components of the user’s environment in conflict with the user’s real-world self-motion (or lack thereof) can be discomforting.  - [Best practices, Oculus](https://developer.oculus.com/documentation/intro-vr/latest/concepts/bp_intro/) 
+
+***Spatial***
+
+- The head-height above ground should be consistent with the immersant's own height, whether sitting or standing. 
+- Real-world movement is more comfortable. Humans walk at ~1.4 meters per second (this is much slower than 'walking' in most video games).
+- Objects drawn from the real-world should have consistent and usually accurate scale.
+- On the other hand, miniature worlds work well -- about table-sized + 3rd person view
+- Avoid confined spaces.
+- No image-based effects such as particles, as they can look flat and break stereoscopy.
+
+**Lighting & texturing**
+
+- Avoid very bright lights, flickering lights, and areas of high contrast -- especially in peripheral vision.
+- Avoid flicking and flashing, especially in peripheral vision.
+
+> Refrain from using any high-contrast flashing or alternating colors that change with a frequency in the 1-30 hz range. This can trigger seizures in individuals with photosensitive epilepsy. - [Best practices, Oculus](https://developer.oculus.com/documentation/intro-vr/latest/concepts/bp_intro/)
+
+- Avoid untextured surfaces, as the lack of detail provides less distance cue and weakens the perceptual illusion, making other conflicting signals more problematic.
+- On the other hand, avoid high-contrast textures, which are more likely to cause flickering due to aliasing noise.
+- Avoid textures that are obviously repetitive, like tiling patterns. Any high-spatial frequency repetition can give discomforting perceptual signals. They can also trigger photosensitive epilepsy.
+- For the same reason, avoid very thin objects, and avoid very regular or straight objects -- irregular/random/organic shapes are more comfortable.
+
+> The images presented to each eye should differ only in terms of viewpoint; post-processing effects (e.g., light distortion, bloom) must be applied to both eyes consistently as well as rendered in z-depth correctly to create a properly fused image. - [Best practices, Oculus](https://developer.oculus.com/documentation/intro-vr/latest/concepts/bp_intro/)
+
+**Uncanny content**
+
+> VR is an immersive medium. It creates the sensation of being entirely transported into a virtual (or real, but digitally reproduced) three-dimensional world, and it can provide a far more visceral experience than screen-based media. Enabling the mind’s continual suspension of disbelief requires particular attention to detail...  - [Best practices, Oculus](https://developer.oculus.com/documentation/intro-vr/latest/concepts/bp_intro/)
+
+The closer we get to experiences we have every day (e.g. walking), the higher the risk of creating perceptual cues that do not match reality. This may be related to the *uncanny valley*. Characters not looking at you / not responding to you properly can be particularly disturbing.
+
+More abstract worlds are less likely to cause such conflicts; non-photorealistic environments in many ways have advantages. Overly realistic environments can also confuse immersants -- who may begin to expect that *everything* in the environment can be interacted with, and be disappointed when it isn't. 
+
+Alternatively, let all things be interactive:
+
+<div class="youtube" data-embed="_TPXop3ONPk"></div>
+
+**Muscle fatigue**
+
+> People will typically move their heads/bodies if they have to shift their gaze and hold it on a point farther than 15-20° of visual angle away from where they are currently looking. Avoid forcing the user to make such large shifts to prevent muscle fatigue and discomfort. - [Best practices, Oculus](https://developer.oculus.com/documentation/intro-vr/latest/concepts/bp_intro/) 
+
+Keep most content at a comfortable viewing angle. It is uncomfortable to look up or down for very long, or to twist sideways frequently or for sustained time. 
+
+> Don’t require the user to swivel their eyes in their sockets to see the UI. Ideally, your UI should fit inside the middle 1/3rd of the user’s viewing area; otherwise, they should be able to examine it with head movements. - [Best practices, Oculus](https://developer.oculus.com/documentation/intro-vr/latest/concepts/bp_intro/)
+
+And if you expect people to sit through the experience, remember that they will only rarely (if at all) see things behind them.
+
+**Experiment**
+
+Try other ideas out. Try them out on lots of people. Just because it feels OK for you doesn't mean it will for others -- and this is more true the more time you spend in VR.
+
+Give people the option to control the intensity of effects that can induce nausea. Not everyone wants to be limited, and some players are willing to forego comfort (or simply are less susceptible to the nausea); recent examples of succesful games that 'break the rules' in this way include Onward and Climbey.
+
+**Learn how to avoid it**
+
+Hardly a solution, but there are a few techniques that people susceptible to sim sickness can make use of: 
+
+- Take time to calibrate the headset to your eyes -- your inter-pupillary distance, your field of view, the height of your eyes above ground (when standing), etc.
+- When turning, keep your eyes locked on to a specific point. Also, focus on the horizon in moments that you feel unsteady.
+- Close your eyes for any nausea-inducing moments.
+- Sitting is usually better than standing, so long as the experience can place you at an appropriate height in the virtual world. Some prefer lying on their backs.
+- Remember to take breaks.
+- Don't expose yourself to nauseating experiences too often -- it can make you more sensitive, and create negative associations that are hard to shake (e.g. with the smell of the headset).
+- On the other hand, over time the effect can reduce. Early pseudo-3D game such as Doom and Duke Nukem, at very low resolutions on screens, were still able to evoke motion sickness in players -- this seems remarkable and difficult to believe today -- but it suggests that perhaps VR experiences will be less nauseating the more we are used to them.
+
+> When a land-lubber steps onto a boat for the first time, often the rocking and variations in vestibular motion from the ocean causes a feeling of ‘sea-sickness’ that is not too different from simulator sickness. However, for most people, after a few hours or days that feeling typically dissipates as they get what is commonly referred to as their ‘sea legs.’ It is something that experienced seamen are very well adapted to. It is also something, I would argue, that replicates itself in VR. - [5 ways to reduce motion sickness in VR](http://uploadvr.com/five-ways-to-reduce-motion-sickness-in-vr/) 
+
+- Do it in a well-ventilated space, at a comfortable temperature.
+- Eat ginger (a long known remedy for motion sickness). Some also recommend a little alcohol, while others say that this makes it worse. Do not try VR when sick, hungover, etc. 
+> A popular household remedy in Asia is rub eucalypti leaves together and inhale the scent produced from them. - [Sim Sickness guide on Oculus forums](https://forums.oculus.com/viewtopic.php?t=170)
+
+---
+
+### Space and the body 
+
+- We cannot focus on objects closer than ~5cm, for some people as much as 20cm, so it is good to avoid placing virtual content too close to the head. And in general it is disturbing for objects to intersect the body (whether a virtual body exists or not). Static objects are usually fine as most people will naturally move around them, but dynamic objects may need to be aware of where the person is.
+
+> Converging the eyes on objects closer than the comfortable distance range above can cause the lenses of the eyes to misfocus, making clearly rendered objects appear blurry as well as lead to eyestrain. - [Best practices, Oculus](https://developer.oculus.com/documentation/intro-vr/latest/concepts/bp_intro/)
+
+- Shocking/scary etc. content is much more powerful in VR, as it can approach the body and trigger physiological responses in a way that past media could not. For example, too much action of flying bullets, explosions, moving vehicles etc. around the user can be distressing, where it would be quite acceptable in a screen-based film/game. For good reason a lot of early VR experiences are in the horror genre. Compare the slow-motion time of the Showdown demo.
+
+> When we started tinkering with the DK1 back in the beginning of 2014, the VR scene was pretty much two things: first-person view horror games and rollercoasters. A lot of people saw the future of VR entertainment as that kind of experiences. - [Locomotion and the fear of VR](http://fatedblog.com/2015/08/06/locomotion-simulation-sickness-and-the-fear-of-vr/)
+
+- You may need to consider the physical limits of the space in which tracking works (and in which it is safe for a blind person to move around). Again, the hardware's drivers are beginning incorporate features to automatically show the tracking limits (e.g. the blue grid that becomes visible in the Vive).
+
+> Provide the user with warnings as they approach (but well before they reach) the edges of the position camera’s tracking volume as well as feedback for how they can re-position themselves to avoid losing tracking. We recommend you do not leave the virtual environment displayed on the Rift screen if the user leaves the camera’s tracking volume, where positional tracking is disabled. It is far less discomforting to have the scene fade to black or otherwise attenuate the image (such as dropping brightness and/or contrast) before tracking is lost. - [Best practices, Oculus](https://developer.oculus.com/documentation/intro-vr/latest/concepts/bp_intro/)
+
+- 3D depth perception is extremely powerful at short range, and effective within a range of a few meters. Beyond 10 meters, stereopsis ceases to be the most important depth cue, and parallax (i.e. moving via position tracking), texture, size, lighting etc. take precedence. It therefore makes sense to place significant content and interaction in this range. For this reason, user interface overlays are usually positioned 1-3 meters away. Several HMDs have their optics (lenses etc.) designed to make it most comfortable to view virtual objects within a handful of meters. 
+
+- [Beyond around 60m](https://forums.oculus.com/viewtopic.php?f=33&t=4155),  there is virtually no distinguishable stereopsis effect at all, and it can be effectively rendered in mono (may be more efficient).
+
+- Spatializing audio is much more important -- presenting audio in mono, or worse, in a single speaker, breaks immersion. Headphone audio should also use head orientation, and located sounds should get significantly louder when you lean toward them closely. 
+
+- Until headsets go wireless (perhaps 2017) the tethering cable to the headset can limit certain motions.
+
+- Physical interaction devices can't been seen while wearing a headset. The keyboard in particular is almost impossible to use. 
+
+> “In VR, you don’t have a keyboard full of hotkeys,” says Malaika. “The buttons on a controller are much more limited, so you have to think about how to provide the same number of choices…and manage the number of choices a user has.”   - [Valve advice for VR](http://www.gamasutra.com/view/news/250362/Valve_shares_advice_on_designing_great_VR_game_interactions.php)
+
+- Even with tracked hand-held devices, or tracking via Leap Motion or the Kinect, there is still no haptic feedback -- no sense of touch. For some reason, gloves are not in fashion for VR this time around (as they were in the 90's). For Leap Motion in particular, [here are some accumulated best practices.](https://developer.leapmotion.com/assets/Leap%20Motion%20VR%20Best%20Practices%20Guidelines.pdf). There has been some research into using ultrasonic haptic displays, but the effective range is low. The state of the art in touch is to put physical objects in space:
+
+<div class="youtube" data-embed="NSCZxsd-9hA"></div>
+
+**See also:**
+
+(Elements borrowed from [Kevin Burke's guide](https://kev.inburke.com/slides/virtual-reality/), [Simulator Sickness](http://www.gamasutra.com/blogs/BenLewisEvans/20140404/214732/Simulation_Sickness_and_VR__What_is_it_and_what_can_developers_and_players_do_to_reduce_it.php))
+
+[Tips from a team who ported a base-jumping game to VR](https://youtu.be/DqZZKi4UHuo?list=PLckFgM6dUP2hc4iy-IdKFtqR9TeZWMPjm&t=228)
+
+See the [Simulator Sickness questionnaire](https://www.twentymilliseconds.com/html/ssq-scoring.html)
+
+- [Valve advice in interaction in VR](http://www.gamasutra.com/view/news/250362/Valve_shares_advice_on_designing_great_VR_game_interactions.php)
+
+
+</script>
+</div>
+</div>
+</div>
+<script src="js/highlight.pack.js"></script>
+<script src="js/marked.js"></script>
+<script>
+//hljs.initHighlightingOnLoad();
+//hljs.highlight
+
+// Set default options
+marked.setOptions({
+	highlight: function(code, lang) {
+		return hljs.highlight(lang || "javascript", code).value || code;
+	}
+});
+
+var renderer = new marked.Renderer();
+
+
+var toc = []; // your table of contents as a list.
+renderer.heading = function(text, level) {
+	var slug = text.toLowerCase().replace(/[^\w]+/g, '-');
+	if (level == 2) {
+		toc.push("- [" + text + "](#"+slug+")");
+	}
+	return "<h" + level + " id=\"" + slug + "\"><a href=\"#" + slug + "\" class=\"anchor\"></a>" + text + "</h" + level + ">";
+};
+
+var convertMarkdown = function(text) {
+	toc = [];
+	var body = marked(text, { renderer: renderer });
+	document.getElementById('toc').innerHTML = marked(toc.join("\n"));
+	return body;
+};
+
+var body = document.getElementById('sourcetext').innerText;
+document.getElementById('main_body').innerHTML = convertMarkdown(body);
+
+function addyoutube(element, id) {
+	// Load the image asynchronously
+    var image = new Image();
+	image.src = "https://img.youtube.com/vi/"+ id +"/0.jpg";
+	image.addEventListener( "load", function() { element.appendChild(image); }(i));
+	
+   	// click to play
+    element.addEventListener( "click", function() {
+    	this.innerHTML = '<iframe width="640" height="360" src="https://www.youtube.com/embed/'+id+'?rel=0" frameborder="0" allowfullscreen></iframe>';
+    });
+}
+
+var youtube = document.querySelectorAll( ".youtube" );
+for (var i = 0; i < youtube.length; i++) addyoutube(youtube[i], youtube[i].dataset.embed);
+
+</script>
+</body>
+</html>
