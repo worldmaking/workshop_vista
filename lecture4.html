@@ -45,21 +45,234 @@ img { width: 100%; max-width: 100%; }
 
 # Lecture 4
 
-HUD
+## First Person Controller
 
-Press key to start
+If we don't already have it, let's add a character controller to our scene. 
 
-Click on items (post to console)
+- Delete the [Main Camera]
+- Either:
+	- a) Add the Standard Assets package from the Asset Store
+	- or b) in the menu Assets > Import Package > Characters
+- Now in the Project go to Assets/Standard Assets/Characters/FirstPersonCharacter/Prefabs and drag the FPSController into your scene.
 
-Log message to CSV
+Now when you play the scene, you can walk aroudn the room.
 
-Press key to stop
+If you fall through the floor, you'll need to take your floor game object and Add Component > Physics > Box Collider.
 
-## Recording data to disk
+## Mouse clicking
+
+To click on objects, and save them to disk, we create a new script compoment attached to the main camera. 
+
+(The main camera is now a child object of the FPSController)
 
 ```csharp
-string s = "code samples look like this";
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+
+public class RayCastingMouseClick : MonoBehaviour {
+
+    public Camera mainCam;
+    
+    // Update is called once per frame
+    void Update () {
+        
+		//Raycast - Cast array from the mouse click coordinate in the direction of view
+		if (Input.GetMouseButtonDown(0))
+		{
+			RaycastHit hit;
+			Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
+			if (Physics.Raycast(ray, out hit, 100.0f))
+			{
+				Debug.Log("You selected the " + hit.transform.name); 
+			}
+		}
+    }
+}
 ```
+
+To set the mainCam variable, in the Unity Inspector for the RayCastingMouseClick component, drag the Main Camera object into the mainCam slot.
+
+Now when you play, the Console should show the name of any object you click on. 
+
+Let's add the date & time to that message, and also check whether what we clicked on was a *changed* Stimulus:
+
+```csharp
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+
+public class RayCastingMouseClick : MonoBehaviour {
+
+    public Camera mainCam;
+    
+    // Update is called once per frame
+    void Update () {
+        var sourceDate = DateTime.Now;
+        
+		//Raycast - Cast array from the mouse click coordinate in the direction of view
+		if (Input.GetMouseButtonDown(0))
+		{
+			RaycastHit hit;
+			Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
+			if (Physics.Raycast(ray, out hit, 100.0f))
+			{
+				// did you pick a Stimulus, and was it changed?
+				bool isChanged = false; 
+				var stim = hit.transform.gameObject.GetComponent<Stimulus>();
+				if (stim != null)
+				{
+					isChanged = stim.isChanged;
+				}
+
+				//Prints to the console the object name, the date, etc.
+				Debug.Log("You selected the " + hit.transform.name + " at " + sourceDate + ", whose changed status is " + isChanged); 
+			}
+		}
+    }
+}
+```
+
+### Writing a CSV file:
+
+To store the trial data, we would like to add a line to a CSV file for each mouse click. To do this we'll make another new script component on the Main Camera, called SaveToCSV.cs. We can talk through what each of these things are doing below:
+
+```csharp
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
+using System.IO;
+using System;
+
+public class SaveToCSV : MonoBehaviour
+{
+    // Stringbuilder will concatenate many strings into lines and parapgraphs  [ https://msdn.microsoft.com/en-us/library/system.text.stringbuilder(v=vs.110).aspx ]
+    StringBuilder sb = new StringBuilder();
+    string fileTitle;
+
+    // Use this for initialization
+    void Start()
+    {
+        sb.Length = 0;
+        sb.AppendLine("Date, Hit Name, Hit Object, Is Changed");
+    }
+
+    // This will take 4 variables from another class and append them into 4 columns of data for each object
+    public void Add(string date, string hitName, string hitobj, bool isChangedBool) {
+        sb.AppendLine(String.Format("{0},{1},{2},{3}", date, hitName, hitobj, isChangedBool));
+    }
+
+    public void FileName(string fileName)
+    {
+        fileTitle = fileName;
+    }
+
+    public void Save()
+    { 
+        string filePath = getPath();
+        Debug.Log("Saved to:" + filePath);
+
+        // Writes stringbuilder to a fill     [ https://msdn.microsoft.com/en-us/library/system.io.streamwriter(v=vs.110).aspx ]
+        StreamWriter outStream = System.IO.File.CreateText(filePath);
+        outStream.WriteLine(sb);
+        outStream.Close();
+    }
+
+    // Following method is used to retrive the relative path as device platform
+    private string getPath()
+    {
+#if UNITY_EDITOR
+        return Application.dataPath +"/CSV/"+ fileTitle + ".csv";
+#elif UNITY_ANDROID
+        return Application.persistentDataPath + fileTitle + ".csv";
+#elif UNITY_IPHONE
+        return Application.persistentDataPath+"/"+ fileTitle + ".csv";
+#else
+        return Application.dataPath + "/" + fileTitle + ".csv";
+#endif
+    }
+}
+```
+
+
+
+### Combining them together:
+
+If we want to start & stop trials using a key press, we can add logic for that too:
+
+```csharp
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+
+public class RayCastingMouseClick : MonoBehaviour {
+
+    public Camera mainCam;
+    public int CSVFileCount = 0;
+    public SaveToCSV csv;
+    private bool isInTrial = false;
+    
+    // Update is called once per frame
+    void Update () {
+        var sourceDate = DateTime.Now;
+        //Check if space button is pressed
+        if (Input.GetKeyDown((KeyCode.Space)))
+        {
+            isInTrial = !isInTrial;
+            if (!isInTrial)
+            {
+                CSVFileCount += 1;
+                csv.FileName(sourceDate.ToString().Replace("/", "_").Replace("\\", "_").Replace(":", "_") +" " + CSVFileCount);
+                csv.Save();
+            }
+        }
+
+        if (isInTrial) 
+        { 
+            //Raycast - Cast array from the mouse click coordinate in the direction of view
+            if (Input.GetMouseButtonDown(0))
+            {
+                RaycastHit hit;
+                Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out hit, 100.0f))
+                {
+                    // did you pick a Stimulus, and was it changed?
+                    bool isChanged = false; 
+                    var stim = hit.transform.gameObject.GetComponent<Stimulus>();
+                    if (stim != null)
+                    {
+                        isChanged = stim.isChanged;
+                    }
+
+                    //Prints to the console the object name, the date, etc.
+				    Debug.Log("You selected the " + hit.transform.name + " at " + sourceDate + ", whose changed status is " + isChanged); 
+                    
+                    //Sending the object variables from this script to another script
+                    csv.Add(sourceDate.ToString(), hit.transform.name, hit.transform.ToString(), isChanged);
+                }
+            }
+        
+        }
+    }
+}
+```
+
+The last thing we have to do is hook up the two scripts together in the editor. In the Inspector for the RayCastingMouseClick component, there is a slot called "csv": drag the SaveToCSV component into this slot.
+
+The two full scripts we have created are here:
+
+[RayCastingMouseClick.cs](RayCastingMouseClick.cs)
+
+[SaveToCSV.cs](SaveToCSV.cs)
+
 
 </script>
 </div>
