@@ -35,6 +35,7 @@ img { width: 100%; max-width: 100%; }
 <div class="full column" id="main_body">
 <script type="bogus" id="sourcetext">
 
+
 - **[Doing VR for Researchers](http://vista.info.yorku.ca/vrworkshop)**
 - [Lecture 1 notes](lecture1.html)
 - [Lecture 2 notes](lecture2.html)
@@ -42,24 +43,61 @@ img { width: 100%; max-width: 100%; }
 - [Lecture 4 notes](lecture4.html)
 - [Lecture 5 - part 1](lecture5_part1.html)
 - [Lecture 5 - part 2](lecture5_part2.html)
+	
 
-# Lecture 4
+# Lecture 1 notes
 
-HUD
+Unity defaults to measuring in meters.
 
-Press key to start
+Keys:
 
-Click on items (post to console)
+- Select an object in the Hierarchy, then press "F" key to Focus it in the Scene window
+- "Q" key to move in the scene window
+- "W" key to move selected objects 
+- "E" key to rotate objects
+- "R" key to scale objects
 
-Log message to CSV
+Our first scene starts with just a Main Camera and a Directional Light in the Hierarchy. 
 
-Press key to stop
+### Adding a floor
 
-## Recording data to disk
+We can add a floor like this:
 
-```csharp
-string s = "code samples look like this";
-```
+GameObject > 3D > Plane
+
+In the Inspector, set the Position XYZ to 0,0,0
+
+To scale it up, we can either set the Scale in the Inspector, or scale in the window using "R" key
+
+Create folders in the Project Assets window to keep them organized:
+
+Inside a  Lecture1/Materials folder in Assets, right-click and choose Create > Material -- then name the new material it creates, e.g. "Carpet".
+
+With the new material selected, in the Inspector, change the Albedo property (this is the base colour)
+
+Drag this material onto the floor object to make the floor use this material.
+
+### Adding walls
+
+GameObject > 3D > Cube
+
+Scale & position the cube to become a wall, and rename it "Wall"
+
+Duplicate it (Cmd-D / Ctrl-D) and move / rotate to create three more walls
+
+
+## Assets
+
+Recommend downloading:
+
+[Standard Assets](https://assetstore.unity.com/packages/essentials/asset-packs/standard-assets-32351) -- for the FPSPlayerController as well as many other items
+
+For room props:
+- [Props for the Classroom](https://assetstore.unity.com/packages/3d/props/interior/props-for-the-classroom-5977)
+- [Kitchen props free](https://assetstore.unity.com/packages/3d/props/interior/kitchen-props-free-80208)
+- [Toon furniture](https://assetstore.unity.com/packages/3d/props/furniture/toon-furniture-88740)
+
+
 
 </script>
 </div>
