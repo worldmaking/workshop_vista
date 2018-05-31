@@ -93,6 +93,8 @@ public class RayCastingMouseClick : MonoBehaviour {
 
 To set the mainCam variable, in the Unity Inspector for the RayCastingMouseClick component, drag the Main Camera object into the mainCam slot.
 
+If you are using the FPSController, the mouse click will always be from the center of the screen. To add a cross-hair, the simplest thing is to add a UI Component with an "X" or a "+" character, that is centered in the Rect Transform alignment in the UI's Inspector.
+
 Now when you play, the Console should show the name of any object you click on. 
 
 Let's add the date & time to that message, and also check whether what we clicked on was a *changed* Stimulus:
