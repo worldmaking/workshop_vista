@@ -32,7 +32,14 @@ public class RayCastingMouseClick : MonoBehaviour {
             if (Input.GetMouseButtonDown(0))
             {
                 RaycastHit hit;
-                Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
+
+                // use this version if using FPSController
+                // Create a ray from the transform position along the transform's z-axis
+                Ray ray = new Ray(this.transform.position, this.transform.forward);
+                
+                // use this version instead if using mouse cursor:
+                //Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
+                
                 if (Physics.Raycast(ray, out hit, 100.0f))
                 {
                     // did you pick a Stimulus, and was it changed?
