@@ -102,8 +102,7 @@ Do this for as many "floors" you want to be valid teleport targets.
 
 We took the existing SteamVR_LaserPointer.cs prefab and modified it to report an object as it is clicked on by a laser pointer. 
 
-To do what we needed, we took the existing SteamVR_LaserPointer.cs script and created a copy, called Vista_Pointer.cs, with the following modifications:
-
+- Duplicate the existing SteamVR_LaserPointer.cs and call it Vista_Pointer.cs
 - Rename the class from SteamVR_LaserPointer to Vista_Pointer
 - In the class, add a new property: ```public bool triggerDown = false;```
 - In the Update() function, toward the end (where the pointer thickness is modified), we added code to detect a first click and log it:
@@ -136,105 +135,6 @@ Then we can add code to connect this with our CSV writer.
 
 [Here's the full code for Vista_Pointer.cs](Vista_Pointer.cs)
 
-```csharp
-//======= Copyright (c) Valve Corporation, All rights reserved. ===============
-using UnityEngine;
-using System.Collections;
-
-public class Vista_Pointer : MonoBehaviour
-{
-    public bool active = true;
-    public Color color;
-    public float thickness = 0.002f;
-    public GameObject holder;
-    public GameObject pointer;
-    bool isActive = false;
-    public bool addRigidBody = false;
-    public Transform reference;
-    public bool triggerDown = false;
-
-    // Use this for initialization
-    void Start()
-    {
-        holder = new GameObject();
-        holder.transform.parent = this.transform;
-        holder.transform.localPosition = Vector3.zero;
-        holder.transform.localRotation = Quaternion.identity;
-
-        pointer = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        pointer.transform.parent = holder.transform;
-        pointer.transform.localScale = new Vector3(thickness, thickness, 100f);
-        pointer.transform.localPosition = new Vector3(0f, 0f, 50f);
-        pointer.transform.localRotation = Quaternion.identity;
-        BoxCollider collider = pointer.GetComponent<BoxCollider>();
-        if (addRigidBody)
-        {
-            if (collider)
-            {
-                collider.isTrigger = true;
-            }
-            Rigidbody rigidBody = pointer.AddComponent<Rigidbody>();
-            rigidBody.isKinematic = true;
-        }
-        else
-        {
-            if (collider)
-            {
-                Object.Destroy(collider);
-            }
-        }
-        Material newMaterial = new Material(Shader.Find("Unlit/Color"));
-        newMaterial.SetColor("_Color", color);
-        pointer.GetComponent<MeshRenderer>().material = newMaterial;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (!isActive)
-        {
-            isActive = true;
-            this.transform.GetChild(0).gameObject.SetActive(true);
-        }
-
-        float dist = 100f;
-
-        SteamVR_TrackedController controller = GetComponent<SteamVR_TrackedController>();
-
-        Ray raycast = new Ray(transform.position, transform.forward);
-        RaycastHit hit;
-        bool bHit = Physics.Raycast(raycast, out hit);
-
-        if (bHit && hit.distance < 100f)
-        {
-            dist = hit.distance;
-        }
-
-        if (controller != null && controller.triggerPressed)
-        {
-            pointer.transform.localScale = new Vector3(thickness * 5f, thickness * 5f, dist);
-            if (!triggerDown)
-            {
-                Debug.Log("Object Hit: " + hit.transform);
-                triggerDown = true;
-            }
-        }
-        else
-        {
-            pointer.transform.localScale = new Vector3(thickness, thickness, dist);
-            triggerDown = false;
-        }
-        pointer.transform.localPosition = new Vector3(0f, 0f, dist / 2f);
-    }
-}
-```
-
-Create a new Script, call it "Vista_Pointer.cs", and paste in the following code:
-
-```csharp
-TODO
-```
-
 Attach this script to each Controller (Left) and/or Controller (Right).
 
 We can then modify this to talk to the CSV writer script, as we did for the mouse clicking script.
@@ -246,8 +146,23 @@ Create a TeleportPoint as described earlier, but in the inspector of the Telepor
 Now in the TeleportPoint.cs script, we can modify the TeleportToScene() function:
 
 ```csharp
-
+		public void TeleportToScene()
+		{
+			if ( !string.IsNullOrEmpty( switchToScene ) )
+			{
+				Debug.Log( "TeleportPoint: Hook up your level loading logic to switch to new scene: " + switchToScene );
+				
+				// NEW:
+                SceneManager.LoadScene(switchToScene, LoadSceneMode.Single);
+            }
+			else
+			{
+				Debug.LogError( "TeleportPoint: Invalid scene name to switch to: " + switchToScene );
+			}
+		}
 ```
+
+For the scene we teleport to, perhaps we can duplicate our existing scene, remove most of the objects (other than the floor, light, and VR controller), and place another teleport-to-scene object to teleport ourselves back into the trial scene.
 
 </script>
 </div>
