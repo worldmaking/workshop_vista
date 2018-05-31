@@ -15,7 +15,7 @@ public class RayCastingMouseClick : MonoBehaviour {
     void Update () {
         var sourceDate = DateTime.Now;
         //Check if space button is pressed
-        if (Input.GetKeyDown((KeyCode.Space)))
+        if (Input.GetKeyDown((KeyCode.Z)))
         {
             isInTrial = !isInTrial;
             if (!isInTrial)
