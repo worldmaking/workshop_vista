@@ -60,6 +60,7 @@ Import the SteamVR plugin to your project. It might ask to overwrite some of you
 1. Select your FPSController or RigidBodyFPSController or Main Camera, and in the Inspector, untick the box next to the name (this will disable the object and all its children). 
 2. From the Project, in SteamVR / Prefabs, drag in the [CameraRig] prefab 
 
+
 To disable VR again, you can disable the [CameraRig] in 
 
 ### Adding Teleportation
@@ -75,13 +76,11 @@ On the Right Hand's script component, set Starting Hand Type to "Right Hand"
 On both hand script components, drop the other hand object into the "Other Hand" attribute
 
 Then in the [CameraRig]'s inspector, Add Component "Player", and in this new component:
-- set the Hmd Transforms size attribute to 1
-- drag in the Camera (eye) scene object to the Element 0 attribute
-- set the Hands Size to 2
-- drag in the Left hand and Right hand objects to the Element 0 and Element 1 attributes
-- drag [CameraRig] into the Rig Steam VR attribute
+- drag in the Camera (eye) scene object to the Hmd Transforms attribute
+- drag in the Left hand and Right hand objects to the Hands attribute
+- Drag the [CameraRig] object inot the Rig Steam VR attribute
 
-Drag the Teleport Prefab from Project's SteamVR/InteractionSystem/Teleport/Prefabs
+Drag the Teleport Prefab from Project's SteamVR/InteractionSystem/Teleport/Prefabs into the scene (doesn't matter where, but you could put it under [CameraRig] for organization)
 
 #### For specific teleport locations:
 
@@ -98,10 +97,17 @@ Do this for as many "floors" you want to be valid teleport targets.
 
 #### For a laser pointer to select objects
 
-We took the existing SteamVR_LaserPointer.cs prefab and modified it to report an object as it is clicked on by a laser pointer. 
+First, on each Controller (left) and Controller (right):
+- remove the Steam VR_Tracked Object components
+- add Steam VR_Tracked Controller script components
+- add Steam VR_LaserPointer script components
 
-- Duplicate the existing SteamVR_LaserPointer.cs and call it Vista_Pointer.cs
-- Rename the class from SteamVR_LaserPointer to Vista_Pointer
+You can change the color of the laser pointer in the inspector.
+
+To report the name of the object pointed to:
+
+- Edit the SteamVR_LaserPointer.cs script:
+
 - In the class, add a new property: ```public bool triggerDown = false;```
 - In the Update() function, toward the end (where the pointer thickness is modified), we added code to detect a first click and log it:
 
@@ -129,13 +135,8 @@ We took the existing SteamVR_LaserPointer.cs prefab and modified it to report an
 
 ```
 
-Then we can add code to connect this with our CSV writer. 
+Then we can add code to connect this with our CSV writer as before.
 
-[Here's the full code for Vista_Pointer.cs](Vista_Pointer.cs)
-
-Attach this script to each Controller (Left) and/or Controller (Right).
-
-We can then modify this to talk to the CSV writer script, as we did for the mouse clicking script.
 
 #### Teleport to a new scene
 
